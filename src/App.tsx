@@ -65,8 +65,15 @@ function App() {
       })
 
       if (!infoResponse.ok) {
-        const errorData = await infoResponse.json()
-        throw new Error(errorData.error || 'Failed to get video information')
+        let errorMessage = 'Failed to get video information'
+        try {
+          const errorData = await infoResponse.json()
+          errorMessage = errorData.error || errorMessage
+        } catch {
+          // If response is not JSON, use default error message
+          errorMessage = `Failed to get video information (Status: ${infoResponse.status})`
+        }
+        throw new Error(errorMessage)
       }
 
       const videoData = await infoResponse.json()
@@ -87,8 +94,15 @@ function App() {
       })
 
       if (!convertResponse.ok) {
-        const errorData = await convertResponse.json()
-        throw new Error(errorData.error || 'Failed to convert video')
+        let errorMessage = 'Failed to convert video'
+        try {
+          const errorData = await convertResponse.json()
+          errorMessage = errorData.error || errorMessage
+        } catch {
+          // If response is not JSON, use default error message
+          errorMessage = `Failed to convert video (Status: ${convertResponse.status})`
+        }
+        throw new Error(errorMessage)
       }
 
       // Create blob URL for download
