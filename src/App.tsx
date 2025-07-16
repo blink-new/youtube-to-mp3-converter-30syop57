@@ -250,6 +250,25 @@ function App() {
           </CardContent>
         </Card>
 
+        {/* Demo Notice */}
+        <Card className="shadow-lg border-0 bg-blue-50 border-blue-200 mb-8">
+          <CardContent className="p-6">
+            <div className="flex items-start gap-3">
+              <div className="bg-blue-100 p-2 rounded-full flex-shrink-0">
+                <AlertCircle className="h-5 w-5 text-blue-600" />
+              </div>
+              <div>
+                <h3 className="font-semibold text-blue-900 mb-2">Demo Version</h3>
+                <p className="text-blue-800 text-sm">
+                  This is a demonstration version that shows the UI and workflow. The actual MP3 conversion 
+                  generates a mock audio file. In a production version, this would integrate with proper 
+                  YouTube audio extraction services.
+                </p>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+
         {/* Instructions */}
         <Card className="shadow-lg border-0">
           <CardHeader>
